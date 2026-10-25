@@ -1415,8 +1415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b64e903409be4043833475c9c3f5251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalWaves: 3
-  waveReward: 40
+  waves: []
+  spawner: {fileID: 0}
 --- !u!1 &723484354
 GameObject:
   m_ObjectHideFlags: 0

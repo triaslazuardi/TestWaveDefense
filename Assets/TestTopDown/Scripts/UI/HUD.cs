@@ -1,5 +1,4 @@
-using Nitzz.Game.Build;
-using Nitzz.Game.Core;
+using Nitzz.Game.Cores;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,19 +1,23 @@
 using Nitzz.Game.State;
 using Nitzz.Game.Build;
+using Nitzz.Game.Enemies;
 using UnityEngine;
+using Nitzz.Game.Data;
+using Nitzz.Game.Structures;
 
-namespace Nitzz.Game.Core
+namespace Nitzz.Game.Cores
 {
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
 
-        [SerializeField] int totalWaves = 3;
-        [SerializeField] int waveReward = 40;
+        [SerializeField] WaveData[] waves;
+        [SerializeField] EnemySpawner spawner;
 
-        public int TotalWaves => totalWaves;
+        public int TotalWaves => waves.Length;
         public int CurrentWave { get; private set; }
         public bool CanBuild => Fsm.Current == build;
+        public bool IsDefending => Fsm.Current == defend;
 
         public StateMachine Fsm { get; } = new StateMachine();
 
@@ -47,16 +51,42 @@ namespace Nitzz.Game.Core
             if (Fsm.Current == build) Fsm.ChangeState(defend);
         }
 
-        public void CompleteWave()
+        public void BeginWave() => spawner.StartWave(waves[CurrentWave - 1]);
+
+        public void TickDefend()
         {
-            if (CurrentWave >= totalWaves) { Fsm.ChangeState(win); return; }
+            if (spawner.IsFinished && Enemy.All.Count == 0) CompleteWave();
+        }
+
+        void CompleteWave()
+        {
+            if (CurrentWave >= TotalWaves)
+            {
+                Fsm.ChangeState(win);
+                return;
+            }
+
+            int reward = waves[CurrentWave - 1].clearReward + GeneratorBonus();
+            ResourceManager.Instance.Add(reward);
 
             CurrentWave++;
-            ResourceManager.Instance.Add(waveReward);
             GameEvents.RaiseWaveChanged(CurrentWave);
             Fsm.ChangeState(build);
         }
 
-        void HandleCoreDestroyed() => Fsm.ChangeState(lose);
+        int GeneratorBonus()
+        {
+            int bonus = 0;
+            foreach (var s in Structure.All)
+                if (s.Data != null && s.Data.type == StructureType.Generator)
+                    bonus += s.Data.goldPerWave;
+            return bonus;
+        }
+
+        void HandleCoreDestroyed()
+        {
+            spawner.Stop();
+            Fsm.ChangeState(lose);
+        }
     }
 }

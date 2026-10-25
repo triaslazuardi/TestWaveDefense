@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Nitzz.Game.Core
+namespace Nitzz.Game.Cores
 {
     public interface IState
     {

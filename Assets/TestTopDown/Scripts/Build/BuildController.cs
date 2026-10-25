@@ -1,4 +1,4 @@
-using Nitzz.Game.Core;
+using Nitzz.Game.Cores;
 using Nitzz.Game.Data;
 using Nitzz.Game.Structures;
 using UnityEngine;

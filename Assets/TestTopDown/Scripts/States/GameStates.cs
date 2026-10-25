@@ -1,5 +1,4 @@
-using Nitzz.Game.Build;
-using Nitzz.Game.Core;
+using Nitzz.Game.Cores;
 using UnityEngine;
 
 
@@ -17,15 +16,14 @@ namespace Nitzz.Game.State
         readonly GameManager gm;
         public DefendState(GameManager gm) { this.gm = gm; }
 
-        public void Enter() => GameEvents.RaisePhaseChanged("DEFEND");
-        public void Exit() { }
-
-        public void Tick()
+        public void Enter()
         {
-            // SEMENTARA (hari 1): Space = simulasi wave selesai.
-            // Hari 2 diganti: wave selesai saat semua musuh mati.
-            if (Input.GetKeyDown(KeyCode.Space)) gm.CompleteWave();
+            GameEvents.RaisePhaseChanged("DEFEND");
+            gm.BeginWave();
         }
+
+        public void Tick() => gm.TickDefend();
+        public void Exit() { }
     }
 
     public class ResultState : IState

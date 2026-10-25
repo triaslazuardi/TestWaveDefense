@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f1e6b2a7b76bf43acb1d6855be9dba, type: 3}
+  m_Name: RunnerData
+  m_EditorClassIdentifier: 
+  displayName: Runner
+  maxHealth: 20
+  moveSpeed: 2
+  damage: 5
+  attackInterval: 1
+  prefab: {fileID: 426407796416391963, guid: 0b023e57c3cc6c243ad03949ff141fbb, type: 3}

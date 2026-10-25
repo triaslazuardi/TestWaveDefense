@@ -1,4 +1,4 @@
-using Nitzz.Game.Core;
+using Nitzz.Game.Cores;
 using UnityEngine;
 
 namespace Nitzz.Game.Build
