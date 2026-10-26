@@ -38,7 +38,7 @@ namespace Nitzz.Game.UI
 
         void SetGold(int g) => goldText.text = $"Gold: {g}";
         void SetWave(int w) => waveText.text = $"Wave {w}/{GameManager.Instance.TotalWaves}";
-        void SetCore(int cur, int max) => coreText.text = $"Core: {cur}/{max}";
+        void SetCore(int cur, int max) => coreText.text = $"HP: {cur}/{max}";
 
         void SetPhase(string p)
         {
