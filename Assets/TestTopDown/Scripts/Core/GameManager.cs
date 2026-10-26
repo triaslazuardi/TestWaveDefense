@@ -1,6 +1,7 @@
 using Nitzz.Game.State;
 using Nitzz.Game.Build;
 using Nitzz.Game.Enemies;
+using Nitzz.utility.Sounds;
 using UnityEngine;
 using Nitzz.Game.Data;
 using Nitzz.Game.Structures;
@@ -32,6 +33,7 @@ namespace Nitzz.Game.Cores
             defend = new DefendState(this);
             win = new ResultState(true);
             lose = new ResultState(false);
+            SoundManager.PlayBgm(1);
         }
 
         void OnEnable() => GameEvents.OnCoreDestroyed += HandleCoreDestroyed;

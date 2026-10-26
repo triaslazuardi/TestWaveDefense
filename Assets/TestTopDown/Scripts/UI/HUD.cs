@@ -1,4 +1,5 @@
 using Nitzz.Game.Cores;
+using Nitzz.utility.Sounds;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,7 +18,6 @@ namespace Nitzz.Game.UI
         [Header("Result")]
         [SerializeField] GameObject resultPanel;
         [SerializeField] TMP_Text resultText;
-        [SerializeField] Button restartButton;
 
         void OnEnable()
         {
@@ -35,13 +35,6 @@ namespace Nitzz.Game.UI
             GameEvents.OnCoreHealthChanged -= SetCore;
         }
 
-        void Start()
-        {
-            startWaveButton.onClick.AddListener(() => GameManager.Instance.StartWave());
-            restartButton.onClick.AddListener(() =>
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
-            resultPanel.SetActive(false);
-        }
 
         void SetGold(int g) => goldText.text = $"Gold: {g}";
         void SetWave(int w) => waveText.text = $"Wave {w}/{GameManager.Instance.TotalWaves}";
@@ -58,6 +51,26 @@ namespace Nitzz.Game.UI
                 resultText.text = p == "VICTORY"
                     ? "VICTORY!\nBasis bertahan dari semua wave."
                     : "DEFEAT\nCore hancur.";
+        }
+
+        public void StartWave()
+        {
+            SoundManager.Play(Sfx.Click);
+            GameManager.Instance.StartWave();
+        }
+
+        public void OnRestart()
+        {
+            SoundManager.Play(Sfx.Click);
+            SceneManager.LoadScene("Game");
+            resultPanel.SetActive(false);
+        }
+
+        public void OnMainMenu()
+        {
+            SoundManager.Play(Sfx.Click);
+            SceneManager.LoadScene("MainMenu");
+            resultPanel.SetActive(false);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Nitzz.Game.Cores;
 using Nitzz.Game.Enemies;
 using Nitzz.Game.Structures;
+using Nitzz.utility.Sounds;
 using UnityEngine;
 
 namespace Nitzz.Game.Structures
@@ -23,6 +24,7 @@ namespace Nitzz.Game.Structures
 
             var p = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             p.Launch(target, Data.damage);
+            SoundManager.Play(Sfx.Shoot);
             cooldown = 1f / Data.fireRate;
         }
     }

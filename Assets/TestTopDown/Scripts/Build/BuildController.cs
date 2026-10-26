@@ -1,6 +1,7 @@
 using Nitzz.Game.Cores;
 using Nitzz.Game.Data;
 using Nitzz.Game.Structures;
+using Nitzz.utility.Sounds;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,6 +18,7 @@ namespace Nitzz.Game.Build
         public void Select(int index)
         {
             if (index < 0 || index >= available.Length) return;
+            SoundManager.Play(Sfx.Click);
             selected = available[index];
             ghost.sprite = selected.prefab.GetComponent<SpriteRenderer>().sprite;
         }
@@ -74,6 +76,7 @@ namespace Nitzz.Game.Build
             var structure = go.GetComponent<Structure>();
             structure.Initialize(selected);
             slot.Occupy(structure);
+            SoundManager.Play(Sfx.Build);
         }
     }
 }
