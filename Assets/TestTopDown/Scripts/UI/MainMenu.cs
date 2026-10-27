@@ -11,6 +11,7 @@ namespace Nitzz.Game.UI
 
         void Start()
         {
+            SoundManager.PlayBgm(0);
         }
 
         public void StartGame()

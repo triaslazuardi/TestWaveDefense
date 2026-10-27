@@ -51,7 +51,7 @@ namespace Nitzz.utility.Sounds {
             bgmSource.mute = !BgmOn;
             sfxSource.mute = !SfxOn;
 
-            PlayBgm(0);
+            //PlayBgm(0);
         }
 
         public static void PlayBgm(int arrbgm) {

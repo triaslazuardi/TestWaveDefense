@@ -13,12 +13,12 @@ namespace Nitzz.Game.Data
         public int maxHealth = 50;
         public GameObject prefab;
 
-        [Header("Turret (dipakai hari 2)")]
+        [Header("Turret")]
         public int damage = 8;
         public float range = 2.5f;
         public float fireRate = 1f;
 
-        [Header("Generator (dipakai hari 2)")]
+        [Header("Generator")]
         public int goldPerWave = 15;
     }
 }

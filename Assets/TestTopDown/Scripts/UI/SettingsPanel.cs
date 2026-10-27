@@ -55,8 +55,8 @@ namespace Nitzz.Game.UI
 
         void RefreshLabels(bool bgm, bool sfx)
         {
-            if (bgmLabel != null) bgmLabel.text = bgm ? "BGM: ON" : "BGM: OFF";
-            if (sfxLabel != null) sfxLabel.text = sfx ? "SFX: ON" : "SFX: OFF";
+            if (bgmLabel != null) bgmLabel.text = bgm ? "ON" : "OFF";
+            if (sfxLabel != null) sfxLabel.text = sfx ? "ON" : "OFF";
         }
     }
 }

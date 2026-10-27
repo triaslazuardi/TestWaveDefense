@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TutorialPanel : MonoBehaviour
 {
-    // static: nilainya bertahan antar load scene, jadi Restart tidak memunculkan tutorial lagi.
+
     static bool shownThisSession;
 
     [Serializable]
@@ -20,16 +20,14 @@ public class TutorialPanel : MonoBehaviour
     [SerializeField] Page[] pages;
 
     [Header("UI")]
-    [SerializeField] GameObject parentPanel;        // panel yang di-show/hide (BUKAN objek tempat script ini)
+    [SerializeField] GameObject parentPanel;      
     [SerializeField] TMP_Text titleText;
     [SerializeField] TMP_Text bodyText;
     [SerializeField] TMP_Text pageText;
     [SerializeField] Button prevButton;
-    //[SerializeField] Button nextButton;
-    [SerializeField] TMP_Text nextLabel;
-    //[SerializeField] Button skipButton;
-    //[SerializeField] Button helpButton;
 
+    [SerializeField] TMP_Text nextLabel;
+ 
     int index;
 
     void Start()
@@ -52,7 +50,7 @@ public class TutorialPanel : MonoBehaviour
         SoundManager.Play(Sfx.Click);
         index = 0;
         parentPanel.SetActive(true);
-        Time.timeScale = 0f;     // jeda game selama tutorial terbuka
+        Time.timeScale = 0f;    
         Show();
     }
 
