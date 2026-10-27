@@ -48,9 +48,10 @@ namespace Nitzz.Game.UI
             bool finished = p == "VICTORY" || p == "DEFEAT";
             resultPanel.SetActive(finished);
             if (finished)
+                SoundManager.Play(Sfx.FinishGame);
                 resultText.text = p == "VICTORY"
-                    ? "VICTORY!\nBasis bertahan dari semua wave."
-                    : "DEFEAT\nCore hancur.";
+                    ? "VICTORY!\nThe base survived all waves."
+                    : "DEFEAT\nCamp destroyed.";
         }
 
         public void StartWave()

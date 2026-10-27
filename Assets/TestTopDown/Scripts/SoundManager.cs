@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Nitzz.utility.Sounds { 
 
-    public enum Sfx { Click, Build, Shoot, EnemyDie, StructureDestroyed, Win, Lose }
+    public enum Sfx { Click, Build, Shoot, EnemyDie, FinishGame }
 
     [Serializable]
     public class SfxEntry
